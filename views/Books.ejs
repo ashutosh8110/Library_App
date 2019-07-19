@@ -1,0 +1,45 @@
+<% include partials/header%>
+
+<div class="background" style="background:url(https://images.unsplash.com/photo-1496104679561-38d3af73f9b0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=661&q=80)"></div>
+
+<div class="row" >
+	<div class="col-md-8 col-md-offset-2 col-xs-10 col-xs-offset-1 container" style="background:white">
+	<header class="jumbotron">
+        <div class="container">
+            <h1>Welcome To Library</h1>
+        </div>  
+		<form action="/books" method="GET" class="form-inline">
+		   <div class="form-group">
+			   <input type="text" name="search" placeholder="search by name or author" id="searchInput" class="form-control" >
+			   <input type="submit" value="Search" class="btn btn-default">
+		   </div>
+	   </form>
+    </header>
+		
+	<div class="row container">
+		
+		<div class="col-xs-12">
+			<% if(noMatch!=null) {%>
+			<h4><%=noMatch%></h4>
+			<%}%>
+		</div>	
+		
+		<% Books.forEach(function(book){%>
+		<div class="col-md-3 col-xs-6 circle" >
+			<p class="circle-in" ><%=book.name[0]%></p>
+		</div>
+		<div class="col-md- col-xs-6" style="display:table;height:10em">
+			<h2 class="Book-heading"> <%= book.name%></h2>
+		</div>
+
+		<div class="col-xs-12">
+			<p class="media-heading"><em>By:<%= book.author%></em></p>
+			<p class="media-heading"><strong>Category:</strong><%= book.category%> <strong>Number of items available:</strong><%= book.number%></p>
+			<hr>
+		</div>
+	<%})%>
+	</div>
+	</div>
+</div>
+
+<% include partials/footer%>

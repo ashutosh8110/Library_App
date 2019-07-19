@@ -1,0 +1,55 @@
+<% include partials/header%>
+<div class="background" style="background:url(https://images.unsplash.com/photo-1545130114-6263996a2555?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=675&q=80)"></div>
+
+<div class="row">
+    <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2 back-white" >
+		<div class="row">
+        <% if(user){%><h1 class="centerText">Welcome<%=user.name%></h1><%}%>
+        <div class="col-md-6 col-xs-12">
+			<div >
+			<img src="<%=user.image%>" class="img-circle img-responsive center-block" style="height:15em">
+			</div>
+		</div>
+		<div class="col-md-6 col-xs-12" style="height:10em">
+			<div >
+				<p><strong>id:</strong><%=user._id%></p>
+				<p><strong>Firstname:</strong><%=user.firstname%></p>
+				<p><strong>Lastname:</strong><%=user.lastname%></p>
+				<p><strong>username:</strong><%=user.username%></p>
+				<p><strong>Age:</strong><%=user.Age%></p>
+			</div>
+		</div>
+		</div>
+	</div>
+</div>	
+
+<div class="row">
+	<div class="col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
+		<div class="row back-white">
+			<% user.books.forEach(function(book){%>
+			<div class="col-md-2 circle col-xs-4" >
+				<p class="circle-in" ><%=book.bookcopy.name[0]%></p>
+			</div>
+			<div class="col-md-10 col-xs-8" style="display:table;height:10em">
+				<h2 class="Book-heading"> <%= book.bookcopy.name%></h2>
+			</div>
+
+			<div class="col-xs-12 ">
+				<p class="media-heading"><strong>Author:</strong><%=book.bookcopy.author%> <strong>Issued on:</strong><%= moment(book.issuedOn).fromNow()%>
+				<% var x=Math.floor(moment.duration(moment().diff(book.issuedOn)).asDays()-14)%>
+				<%if(x>0){%> <strong>Fine:</strong> Rs.<%=x*2%><%}%></p>
+				<hr>
+			</div>
+			<%})%>
+		</div>
+	</div>
+</div>
+
+<% include partials/footer %>
+
+
+		
+	
+
+
+

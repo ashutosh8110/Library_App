@@ -1,0 +1,78 @@
+.circle
+{
+	border-radius:50%;
+	display:table;
+	max-width:10em;
+	height:10em
+}
+
+.circle-in
+{
+	vertical-align:middle;
+	display:table-cell;
+	color:#fff;
+	font-size:6em;
+	text-align:center
+}
+
+.Book-heading
+{
+	vertical-align:middle;
+	display:table-cell
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+
+img
+{
+	height:15em;
+	width:15em;
+}
+
+.back-white{
+	background:white;
+	padding:1.5%;
+	margin-bottom:1.5%
+}
+
+.centerText
+{
+	text-align:center;
+}
+
+.background
+{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+	background-size:cover;
+}
+
+.navbar-collapse.collapse {
+	display: block!important;
+}
+
+.navbar-nav>li, .navbar-nav {
+	float: left !important;
+}
+
+.navbar-nav.navbar-right:last-child {
+	margin-right: -15px !important;
+}
+
+.navbar-right {
+	float: right!important;
+}
+
+#searchInput
+{
+	max-width:80%;
+	display:inline-block;
+}

@@ -1,0 +1,58 @@
+<% include partials/header %>
+
+<div class="background" style="background:url(https://images.unsplash.com/photo-1496104679561-38d3af73f9b0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=661&q=80)"></div>
+<div class="row ">
+<div class="col-md-8 col-md-offset-2 col-xs-10 col-xs-offset-1 back-white" style="padding:5%">
+<h1 >ISSUE A BOOK</h1>
+<hr>
+<div class="row">
+	<div class="col-xs-10 ">
+	<%if(user.books&&(3-user.books.length>0)){%>
+	<form class="form-inline" method="post" action="/addbooks/<%=user._id%>">
+		<div class="form-group">
+			<input type="text" class="form-control" name="BookId" placeholder="BookId" >
+		</div>
+		<button type="submit" class="btn btn-info">Issue Books</button>
+	</form>
+	<%}else{%>
+	<h3>user have already issued 3 books</h3>
+	<%}%>
+	</div>
+</div>
+
+<h1>TAKE BOOK BACK FROM USER</h1>
+<hr>
+<% user.books.forEach(function(book){%>
+<div class="row">
+	<div class="col-sm-4 col-xs-4 circle" >
+		<p class="circle-in" ><%=book.bookcopy.name[0]%></p>
+	</div>
+	<div class="col-sm-6 col-xs-6 " >
+		<h2 class="Book-heading"> <%= book.bookcopy.name%> <em style="color:black">By:<%= book.bookcopy.author%></em></h2>
+	</div>
+	<div class="col-sm-3 col-xs-2" >
+		<form action="/takebook/<%=user._id%>/<%=book.bookcopy._id%>/<%=book._id%>" method="POST" >
+			<button class="btn btn-danger">Back</button>
+		</form>
+	</div>
+</div>
+<%})%>
+
+<h1>COLLECT FINE</h1>
+<hr>
+<div class="row">
+	<div class="col-xs-10 ">
+	<p>Fine:<%=user.fine%></p>
+	<form class="form-inline" method="post" action="/fine/<%=user._id%>">
+		<div class="form-group">
+			<input type="number" class="form-control" name="fine" placeholder="fine">
+		</div>
+		<button type="submit" class="btn btn-warning">Take</button>
+	</form>
+	</div>
+</div>
+	
+</div>
+</div>
+
+<% include partials/footer %>
